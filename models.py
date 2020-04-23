@@ -1,4 +1,5 @@
-import sqlite3
+import sqlite3 as sql
+from os import path
 
 #do "pathing"
 #layer that contains info for server <--> database
@@ -16,8 +17,8 @@ def create_post(name, content):
 
 #pull the posts we want from database
 def get_posts():
-	con = sql.connect(pat.join(ROOT, 'database.db'))
-	cur = con.cursor
+	con = sql.connect(path.join(ROOT, 'database.db'))
+	cur = con.cursor()
 	cur.execute('select * from posts')
 	posts = cur.fetchall()
 	return posts
